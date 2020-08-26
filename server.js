@@ -4,15 +4,15 @@ const dotenv=require('dotenv')
 ////////////////////////////////
 const app=express()
 ////////////////////////////////
-app.set('trust proxy',true);
+app.use(express.json())
 dotenv.config({path:'./config/config.env'})
 
-app.set('trust proxy',true);
 const PORT= process.env.PORT||5000
 //adding cors support
 app.use(cors())
 //implementing routes
-app.use('/:url',require('./Routes/getResponse'))
+app.use('/',require('./Routes/getResponse'))
+
 const server=app.listen(PORT,console.log(`server running in Production mode on port ${PORT}`))
 
 //handle unhandled promised rejections
