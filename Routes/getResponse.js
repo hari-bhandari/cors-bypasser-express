@@ -38,14 +38,14 @@ router.put('/',async(req,res)=>{
     }
     res.status(200).send(response.data)
 })
-//
-// router.delete('/',async(req,res)=>{
-//     let response;
-//     try {
-//         response = await axios.delete(req.query.url);
-//     } catch (err) {
-//         res.status(500).json({error:'Something went wrong'})
-//     }
-//     res.status(200).send(response.data)
-// })
+
+router.delete('/',async(req,res)=>{
+    let response;
+    try {
+        response = await axios.delete(req.query.url);
+    } catch (err) {
+        res.status(500).json({error:'Something went wrong'})
+    }
+    res.status(200).send(response.data)
+})
 module.exports=router;
