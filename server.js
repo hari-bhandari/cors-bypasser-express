@@ -12,7 +12,7 @@ const PORT= process.env.PORT||5000
 //adding cors support
 app.use(cors())
 //implementing routes
-app.use('/ip',require('./Routes/getResponse'))
+app.use('/:url',require('./Routes/getResponse'))
 const server=app.listen(PORT,console.log(`server running in Production mode on port ${PORT}`))
 
 //handle unhandled promised rejections
