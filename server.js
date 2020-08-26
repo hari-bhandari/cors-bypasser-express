@@ -13,7 +13,7 @@ app.use(cors())
 //implementing routes
 app.use('/',require('./Routes/getResponse'))
 
-const server=app.listen(PORT,console.log(`server running in Production mode on port ${PORT}`))
+const server=app.listen(PORT, ()=>console.log(`server running in Production mode on port ${PORT}`))
 
 //handle unhandled promised rejections
 process.on('unhandledRejection',(err,promise)=>{
