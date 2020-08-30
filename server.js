@@ -3,6 +3,7 @@ const cors=require('cors')
 const dotenv=require('dotenv')
 const cron =require('cron')
 const axios=require('axios')
+const path=require('path')
 ////////////////////////////////
 const app=express()
 ////////////////////////////////
@@ -19,7 +20,9 @@ const cronJob = cron.job('*/1 * * * *', async function(){
 
 cronJob.start()
 //implementing routes
-app.use('/',require('./Routes/getResponse'))
+app.get('/',(req,res)=>res.sendFile(path.resolve(__dirname,'index.html')))
+
+app.use('/cors',require('./Routes/getResponse'))
 
 const server=app.listen(PORT, ()=>console.log(`server running in Production mode on port ${PORT}`))
 
