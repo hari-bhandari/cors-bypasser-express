@@ -1,6 +1,8 @@
 const express=require('express')
 const cors=require('cors')
 const dotenv=require('dotenv')
+const cron =require('cron')
+const axios=require('axios')
 ////////////////////////////////
 const app=express()
 ////////////////////////////////
@@ -10,6 +12,12 @@ dotenv.config({path:'./config/config.env'})
 const PORT= process.env.PORT||5000
 //adding cors support
 app.use(cors())
+//node-cron
+const cronJob = cron.job('*/1 * * * *', async function(){
+    await axios.get('https://no--cors.herokuapp.com/')
+});
+
+cronJob.start()
 //implementing routes
 app.use('/',require('./Routes/getResponse'))
 
