@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js",
-    "dev": "nodemon server.js"
+    "start": "NODE_ENV=production node server",
+    "server": "nodemon server.js",
+    "client": "npm start --prefix client",
   },
   "keywords": [],
   "author": "",
