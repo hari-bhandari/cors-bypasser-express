@@ -12,20 +12,24 @@ router.post('/',async(req,res)=>{
     let response;
     try {
         response = await axios.post(req.query.url, formData, config);
+
     } catch (err) {
         res.status(500).json({error:'Something went wrong'})
     }
-    res.status(200).send(response.data)
+    response&&res.status(200).send(response.data)
 })
 //get response
 router.get('/',async(req,res)=>{
     let response;
     try {
         response = await axios.get(req.query.url);
+        console.log(response.data)
+
     } catch (err) {
+        console.log(err)
         res.status(500).json({error:'Something went wrong'})
     }
-    res.status(200).send(response.data)
+    response&&res.status(200).send(response.data)
 })
 //update
 router.put('/',async(req,res)=>{
@@ -37,10 +41,11 @@ router.put('/',async(req,res)=>{
     let response;
     try {
         response = await axios.put(req.query.url, formData, config);
+
     } catch (err) {
         res.status(500).json({error:'Something went wrong'})
     }
-    res.status(200).send(response.data)
+    response&&res.status(200).send(response.data)
 })
 //delete
 router.delete('/',async(req,res)=>{
@@ -50,6 +55,6 @@ router.delete('/',async(req,res)=>{
     } catch (err) {
         res.status(500).json({error:'Something went wrong'})
     }
-    res.status(200).send(response.data)
+    response&&res.status(200).send(response.data)
 })
 module.exports=router;
