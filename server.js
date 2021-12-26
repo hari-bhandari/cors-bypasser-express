@@ -15,7 +15,7 @@ const PORT= process.env.PORT||5000
 app.use(cors())
 //node-cron
 const cronJob = cron.job('*/1 * * * *', async function(){
-    await axios.get('https://no--cors.herokuapp.com/')
+    await axios.get('https://golangsite.herokuapp.com/')
 });
 
 cronJob.start()
